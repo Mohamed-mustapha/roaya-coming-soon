@@ -1,0 +1,155 @@
+/* الإعدادات الأساسية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    overflow-x: hidden;
+}
+
+/* إعدادات الترويسة (Header) */
+.header {
+    display: flex;
+    justify-content: space-between;
+    /* المسافة بين النص واللوجو */
+    align-items: center;
+    padding: 10px 50px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #eaeaea;
+    /* خط خفيف أسفل الترويسة */
+    height: 180px;
+    /* زيادة الارتفاع ليتناسب مع اللوجو الذي تم تكبيره للضعف */
+    /* الارتفاع الثابت للترويسة */
+}
+
+/* تنسيق الـ Container الخاص بالنص لترتيب الأنيميشن */
+.coming-soon-container {
+    display: flex;
+    align-items: center;
+}
+
+/* تنسيق نص Coming soon الأحمر المائل مع حركة ظهور واهتزاز خفيفة */
+.coming-soon-text {
+    font-family: 'Great Vibes', cursive;
+    color: #e32619;
+    /* تم اختيار نفس درجة الأحمر من الصورة */
+    font-size: 3.5rem;
+    /* تم تصغير الكلمة بنسبة 30% (من 5rem إلى 3.5rem) */
+    /* الحجم المناسب للخط الجديد */
+    font-weight: 400;
+    /* الوزن المناسب للخط الكلاسيكي */
+    display: inline-block;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards, floatingText 3s ease-in-out infinite alternate;
+    animation-delay: 0.2s;
+    /* تأخير بسيط لبدء الحركة */
+}
+
+/* تنسيق اللوجو مع تكبيره وحركة ظهور */
+.logo {
+    max-height: 160px;
+    /* تم تكبير اللوجو للضعف (من 80px إلى 160px) بناءً على طلبك */
+    /* تم ضبط الارتفاع ليتناسق مع الهيدر الجديد */
+    width: auto;
+    object-fit: contain;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: popIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 0.5s;
+    transition: transform 0.3s ease;
+}
+
+/* تأثير عند مرور الماوس على اللوجو */
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* الحركات (Keyframes) الاحترافية */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes floatingText {
+    from {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(-5px) rotate(-1deg);
+    }
+}
+
+/* حاوية الفيديو أسفل الترويسة */
+.video-container {
+    width: 100%;
+    /* يأخذ الارتفاع المتبقي من الشاشة بعد خصم ارتفاع الترويسة (180px) */
+    height: calc(100vh - 180px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    /* لإعطاء مسافة أو إطار رمادي طفيف حول الفيديو نفس الصورة */
+}
+
+/* إعدادات الفيديو */
+#main-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* ليغطي المساحة المتاحة بشكل احترافي */
+    /* إضافة لمسة جمالية وإطار خفيف */
+    border: 3px solid #dfdfdf;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* التجاوب مع شاشات الموبايل (Responsive Design) */
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .coming-soon-text {
+        font-size: 3rem;
+    }
+
+    .video-container {
+        height: auto;
+        padding: 10px;
+    }
+
+    #main-video {
+        height: auto;
+        max-height: 400px;
+    }
+}
